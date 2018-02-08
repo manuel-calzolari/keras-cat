@@ -51,7 +51,7 @@ model.add(InputCategorical(input_dim=9,
                                       X[:, 6].max(),
                                       X[:, 7].max(),
                                       X[:, 8].max()],
-                           embedding_dim='log2'
+                           embedding_dim='4throot'
                            ))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))

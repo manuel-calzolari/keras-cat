@@ -11,10 +11,12 @@ def _eval_dim(embedding_dim, max_level):
             embedding_dim = max(1, int(np.sqrt(max_level + 1)))
         elif embedding_dim == 'log2':
             embedding_dim = max(1, int(np.log2(max_level + 1)))
+        elif embedding_dim == '4throot':
+            embedding_dim = max(1, int(np.power(max_level + 1, 0.25)))
         else:
             raise ValueError(
                 'Invalid value for embedding_dim. Allowed string '
-                'values are "sqrt" or "log2".')
+                'values are "sqrt", "log2" or "4throot".')
     elif embedding_dim is None:
         embedding_dim = max_level + 1
     elif not isinstance(embedding_dim, (numbers.Integral, np.integer)):  # float
@@ -25,20 +27,21 @@ def _eval_dim(embedding_dim, max_level):
     return embedding_dim
 
 
-def InputCategorical(input_dim, categorical=None, max_level=None, embedding_dim='log2'):
+def InputCategorical(input_dim, categorical=None, max_level=None, embedding_dim='4throot'):
     """Categorical features support with entity embeddings.
 
     # Arguments
         input_dim: int > 0. Size of the input.
         categorical: list of int. Interpreted as indices.
         max_level: list of int. Maximum integer level for every categorical feature.
-        embedding_dim: int, float, string or list of them for every categorical feature (default='log2').
+        embedding_dim: int, float, string or list of them for every categorical feature (default='4throot').
             Dimension of the dense embedding:
                 - If int, then the value is the dimension.
                 - If float, then the value is a percentage and
                   `int(embedding_dim * (max_level + 1))` is the dimension.
                 - If "sqrt", then the value is `sqrt(max_level + 1)`.
                 - If "log2", then the value is `log2(max_level + 1)`.
+                - If "4throot", then the value is `(max_level + 1) ** 0.25`.
 
     # Example
 
