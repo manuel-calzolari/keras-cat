@@ -56,7 +56,7 @@ model.add(InputCategorical(input_dim=9,
 model.add(Dense(32, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer='sgd', metrics=['accuracy'])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
