@@ -1,3 +1,11 @@
+- - -
+
+**_This project is not maintained since March 2019._**
+
+TensorFlow 2.0 provides [feature columns](https://www.tensorflow.org/guide/feature_columns) support for [tf.keras](https://www.tensorflow.org/guide/keras).
+
+- - -
+
 # keras-cat
 
 Keras model for categorical features support in neural networks
